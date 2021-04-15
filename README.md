@@ -1,5 +1,10 @@
 This program mimic the behaviour of a Linux shell but doesn't support full functionality.
-On compatabile with Linux.
+
+Uses forked process to execute commands with parent-child hierarchical structure.
+
+Only compatabile with Linux.
+
+
 
 # Attribution:
 Certain sections of this code is credited to Deb Stacey, with permission.
