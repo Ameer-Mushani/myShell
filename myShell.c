@@ -104,13 +104,13 @@ void changeDir(char * location,char *path) {
 }
 void execHistory(char *param) {
   if(param == NULL) {
-    FILE *fp = fopen(".CIS3110_history", "r");
+    FILE *fp = fopen(".myshell_history", "r");
     char buffer[50] = "";
     while(fgets(buffer, 50, fp) != NULL) {
       printf("%s",buffer);
     }
   } else if(strcmp(param, "-c") == 0) {
-    remove(".CIS3110_history");
+    remove(".myshell_history");
   } else {
     printf("bash: history %s invalid option\n", param);
   }
@@ -158,7 +158,6 @@ void execCommand(char **parameters) {
       }
       if(strcmp("cd", parameters[0]) == 0) {
         chdir(parameters[1]);
-        printf("CH-CH-Ch-CHANGED\n");
         //exit(0);
       }
       else {
@@ -182,13 +181,13 @@ void execCommand(char **parameters) {
       //exit(0);
     }
   } else {
-    printf("EROROOROROROR\n");
+    printf("Fork Failed\n");
     exit(0);
 
   }
 }
 void printToHistory(char **params) {
-  FILE *fp = fopen(".CIS3110_history", "a+");
+  FILE *fp = fopen(".myshell_history", "a+");
   int commands = 0;
   char buffer[50] = "";
   while(fgets(buffer, 50, fp) != NULL) {
@@ -203,7 +202,6 @@ void printToHistory(char **params) {
   fclose(fp);
 }
 void execBackground(char **parameters) {
-  printf("YO HE WAITINg\n");
   pid_t childpid;   /* child's process id */
   int status = 0;       /* for parent process: child's exit status */
   int params;
@@ -271,7 +269,7 @@ void execInputRedirect(char **parameters, int savedStdin, int tmpStdin) {
       //exit(0);
     }
   } else {
-    printf("EROROOROROROR\n");
+    printf("Fork Failed\n");
     exit(0);
 
   }
@@ -310,7 +308,7 @@ void execOutputRedirect(char **parameters, int savedStdout, int tmpStdout) {
       //exit(0);
     }
   } else {
-    printf("EROROOROROROR\n");
+    printf("Fork Failed\n");
     exit(0);
 
   }
